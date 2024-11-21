@@ -1,28 +1,34 @@
+import React, { useState } from "react";
 import "./App.css";
 import Counter from "./components/Counter";
-import ExponentTwo from "./components/ExponentTwo";
-import ExponentThree from "./components/ExponentThree";
-import ExponentFour from "./components/ExponentFour";
-import ExponentFive from "./components/ExponentFive";
-import ExponentSix from "./components/ExponentSix";
+import Exponent from "./components/Exponent"; // Importa el nuevo componente reutilizable
 
+function App() {
+  const [count, setCount] = useState(0);
 
-function App () {
+  const increment = () => setCount(count + 1);
+  const decrement = () => setCount(count - 1);
+
   return (
     <div className="App">
-      <h2><em>Counter</em></h2>
-  
-      <Counter/>
+      <h2>
+        <em>Counter</em>
+      </h2>
+      <Counter count={count} increment={increment} decrement={decrement} />
 
       <br />
-      <h2><em>Exponents</em></h2>
+      <h2>
+        <em>Exponents</em>
+      </h2>
 
       <div className="container">
-        <ExponentTwo />
-        <ExponentThree />
-        <ExponentFour />
-        <ExponentFive />
-        <ExponentSix />
+        {/* Usa el componente Exponent con diferentes valores */}
+        <Exponent num={count} exponent={1} />
+        <Exponent num={count} exponent={2} />
+        <Exponent num={count} exponent={3} />
+        <Exponent num={count} exponent={4} />
+        <Exponent num={count} exponent={5} />
+        <Exponent num={count} exponent={6} />
       </div>
     </div>
   );
